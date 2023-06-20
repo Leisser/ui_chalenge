@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_chalenges/botton_nav_pages/home_page.dart';
-import 'package:ui_chalenges/botton_nav_pages/setting_page.dart';
-import 'package:ui_chalenges/botton_nav_pages/special_food.dart';
+import 'botton_nav_pages/bottom-page_export.dart';
 
 void main() {
   runApp(const MyApp());
