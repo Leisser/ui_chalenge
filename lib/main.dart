@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int index = 1;
 
-  List shownPages = const [SpecialFood(), HomePage(), SettingPage()];
+  List shownPages =  [SpecialFood(), const HomePage(), const SettingPage()];
   @override
   void initState() {
     super.initState();

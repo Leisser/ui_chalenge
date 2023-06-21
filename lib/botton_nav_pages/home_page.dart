@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ui_chalenges/datapages/pupil_names.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String? myName;
+
+  getMyName() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      myName = pref.getString('myname') ?? "Comrade";
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getMyName();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +56,25 @@ class HomePage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        "Good Morning\nEveryone",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const PupilPage(name: "Ivy",classs: 'P1',stream: 'Indigo',)),
+                          );
+                        },
+                        child: Text(
+                          "Good Morning\n$myName",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
@@ -90,8 +122,8 @@ class HomePage extends StatelessWidget {
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 5,
                               blurRadius: 7,
-                              offset:
-                                  Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
@@ -138,8 +170,8 @@ class HomePage extends StatelessWidget {
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 5,
                               blurRadius: 7,
-                              offset:
-                                  Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
@@ -192,8 +224,8 @@ class HomePage extends StatelessWidget {
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 5,
                               blurRadius: 7,
-                              offset:
-                                  Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
@@ -241,8 +273,8 @@ class HomePage extends StatelessWidget {
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 5,
                               blurRadius: 7,
-                              offset:
-                                  Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
