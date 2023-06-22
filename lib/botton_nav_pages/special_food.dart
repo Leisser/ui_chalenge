@@ -4,12 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:ui_chalenges/textuus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SpecialFood extends StatelessWidget {
-  SpecialFood({super.key});
+class SpecialFood extends StatefulWidget {
+  const SpecialFood({super.key});
 
+  @override
+  State<SpecialFood> createState() => _SpecialFoodState();
+}
+
+class _SpecialFoodState extends State<SpecialFood> {
   String? myname = 'Enoch';
+
   List<String>? comodities = [];
+
   List<String>? quantities = [];
+
   List<String>? brands = [];
 
   storeMyName() async {
