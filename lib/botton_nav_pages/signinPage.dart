@@ -29,6 +29,8 @@ class _SignInPageState extends State<SignInPage> {
   bool _responseLoading = false;
   String? password = '';
   String? pasportNumber = '';
+  
+  Artboard? get artboard => null;
 
   _login(String pasportNumber, String password) async {
     var url = Uri.parse("https://cassoatry.shop/user/login");
@@ -73,12 +75,10 @@ class _SignInPageState extends State<SignInPage> {
     animationURL = 'assets/rive/login.riv';
     rootBundle.load(animationURL).then(
       (data) {
-        final file = RiveFile.import(data);
-        final artboard = file.mainArtboard;
         stateMachineController =
-            StateMachineController.fromArtboard(artboard, "Login Machine");
+            StateMachineController.fromArtboard(artboard!, "Login Machine");
         if (stateMachineController != null) {
-          artboard.addController(stateMachineController!);
+          artboard!.addController(stateMachineController!);
 
           for (var e in stateMachineController!.inputs) {
             debugPrint(e.runtimeType.toString());
@@ -87,15 +87,15 @@ class _SignInPageState extends State<SignInPage> {
 
           for (var element in stateMachineController!.inputs) {
             if (element.name == "trigSuccess") {
-              successTrigger = element as SMITrigger;
+              successTrigger = element as SMITrigger?;
             } else if (element.name == "trigFail") {
-              failTrigger = element as SMITrigger;
+              failTrigger = element as SMITrigger?;
             } else if (element.name == "isHandsUp") {
-              isHandsUp = element as SMIBool;
+              isHandsUp != element as SMISting?;
             } else if (element.name == "isChecking") {
-              isChecking = element as SMIBool;
+              isChecking = element as SMIBool?;
             } else if (element.name == "numLook") {
-              numLook = element as SMINumber;
+              numLook = element as SMINumber?;
             }
           }
         }
@@ -413,4 +413,7 @@ class _SignInPageState extends State<SignInPage> {
       ),
     );
   }
+}
+
+class SMISting {
 }
