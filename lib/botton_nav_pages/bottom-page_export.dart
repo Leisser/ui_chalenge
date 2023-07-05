@@ -2,3 +2,4 @@
 export 'home_page.dart';
 export 'setting_page.dart';
 export 'special_food.dart';
+export 'signinPage.dart';
